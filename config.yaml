@@ -1,0 +1,30 @@
+app:
+  name: "Local RAG"
+  log_level: "INFO"
+  debug_content_logging: false
+paths:
+  books_dir: "data/books"
+  index_dir: "data/index"
+  logs_dir: "logs"
+  security_rules: "security_rules.yaml"
+models:
+  ollama_url: "http://localhost:11434"
+  llm_model: "qwen2.5:7b-instruct"
+  embedding_model: "intfloat/multilingual-e5-small"
+  embedding_device: "auto"
+  embedding_batch_size: 16
+retrieval:
+  collection_name: "local_books"
+  top_k: 8
+  min_similarity: 0.0
+  chunk_size: 800
+  chunk_overlap: 150
+  min_chunk_chars: 50
+  max_context_chars: 12000
+  max_fragment_chars: 1800
+security:
+  max_file_size_mb: 100
+  max_query_chars: 4000
+  requests_per_minute: 10
+  block_jailbreak_patterns: true
+  block_sensitive_output: true
